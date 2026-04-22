@@ -77,6 +77,8 @@
 </head>
 <body>
 
+@extends('layouts.master')
+@section('content')
   <div class="wrap">
     <div class="card" data-aos="fade-up">
       <div class="d-flex align-items-center justify-content-between mb-3">
@@ -84,7 +86,6 @@
           <h5 class="mb-0">Form Buku Tamu</h5>
           <small class="small-muted">Isi data singkat untuk administrasi</small>
         </div>
-        <div class="text-end small-muted">Versi sederhana</div>
       </div>
 
       <form action="{{ route('formulir_tambah') }}" method="POST" novalidate>
@@ -162,6 +163,8 @@
 
     </div>
   </div>
+
+@endsection
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>

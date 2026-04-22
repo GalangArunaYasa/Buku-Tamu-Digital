@@ -128,67 +128,67 @@
         .about {
             color: black;
         }
+
         .about:hover {
-            text-decoration: 
+            text-decoration:
         }
 
-        .glass-box{
-            background: 
+        .glass-box {
+            background:
         }
 
 
     </style>
 </head>
 
-<body>
+    <body>
+        <section class="hero-section container-fluid">
+            <div class="row w-100 align-items-center">
 
-    <section class="hero-section container-fluid">
-        <div class="row w-100 align-items-center">
+                <!-- LEFT CONTENT -->
+                <div class="col-lg-6 d-flex justify-content-center" data-aos="zoom-in-up">
+                    <div class="glass-box hero-text">
 
-            <!-- LEFT CONTENT -->
-            <div class="col-lg-6 d-flex justify-content-center" data-aos="zoom-in-up">
-                <div class="glass-box hero-text">
+                        <div class="logo">
+                            <img src="images/logos.png" alt="Logo">
+                        </div>
 
-                    <div class="logo">
-                        <img src="images/logos.png" alt="Logo">
+                        <h1>Buku Tamu Digital</h1>
+
+                        <p>
+                            Selamat datang di <strong>Buku Tamu Digital</strong>, sebuah sistem pencatatan kehadiran modern
+                            yang dirancang untuk memudahkan pengelolaan tamu dalam berbagai acara seperti seminar, rapat,
+                            workshop, pameran, pernikahan, dan kegiatan resmi lainnya.
+                        </p>
+
+                        <p>
+                            Dengan website ini, proses registrasi tamu menjadi <strong>lebih cepat, akurat, dan
+                                efisien</strong>
+                            tanpa perlu buku fisik. Semua data langsung tersimpan secara otomatis dan dapat digunakan
+                            untuk keperluan dokumentasi, laporan, serta evaluasi acara.
+                        </p>
+
+                        <a href="{{ route('formulir') }}" id="btn-start" class="btn mt-4 mb-3 shadow" data-aos="fade-up"
+                            data-aos-delay="450">
+                            + Isi Buku Tamu
+                        </a>
+                        <br>
+                        <a href="{{ route('tentang') }}" class="about m-3" data-aos="fade-up">
+                            `Selengkapnya Tentang Kami`
+                        </a>
+
                     </div>
-
-                    <h1>Buku Tamu Digital</h1>
-
-                    <p>
-                        Selamat datang di <strong>Buku Tamu Digital</strong>, sebuah sistem pencatatan kehadiran modern
-                        yang dirancang untuk memudahkan pengelolaan tamu dalam berbagai acara seperti seminar, rapat,
-                        workshop, pameran, pernikahan, dan kegiatan resmi lainnya.
-                    </p>
-
-                    <p>
-                        Dengan website ini, proses registrasi tamu menjadi <strong>lebih cepat, akurat, dan
-                            efisien</strong>
-                        tanpa perlu buku fisik. Semua data langsung tersimpan secara otomatis dan dapat digunakan
-                        untuk keperluan dokumentasi, laporan, serta evaluasi acara.
-                    </p>
-
-                    <a href="{{ route('formulir') }}" id="btn-start" class="btn mt-4 mb-3 shadow" data-aos="fade-up" data-aos-delay="450">
-                        + Isi Buku Tamu
-                    </a>
-                    <br>
-                    <a href="{{ route('tentang') }}" class="about m-3"  data-aos="fade-up">
-                        `Selengkapnya Tentang Kami`
-                    </a>
-
                 </div>
-            </div>
 
-            <!-- RIGHT IMAGE -->
-            <div class="col-lg-6 d-none d-lg-block">
-                <div class="hero-img-container" data-aos="fade-up-left">
-                    <img src="images/icon.jpg" alt="Hero Image">
+                <!-- RIGHT IMAGE -->
+                <div class="col-lg-6 d-none d-lg-block">
+                    <div class="hero-img-container" data-aos="fade-up-left">
+                        <img src="images/icon.jpg" alt="Hero Image">
+                    </div>
                 </div>
+
             </div>
-
-        </div>
-    </section>
-
+        </section>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
     <script>
