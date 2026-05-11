@@ -1,39 +1,4 @@
 <!-- Sidebar -->
-<div id="sidebar" class="sidebar">
-    <div class="sidebar-header">
-        <h5>GuestApp</h5>
-    </div>
-
-    <ul class="sidebar-menu">
-        <li>
-            <a href="/" class="{{ request()->is('/') ? 'active' : '' }}">
-                <i class="bi bi-tags"></i> Home
-            </a>
-        </li>
-        <li>
-            <a href="/formulir" class="{{ request()->is('formulir') ? 'active' : '' }}">
-                <i class="bi bi-house"></i> Formulir
-            </a>
-        </li>
-        <li>
-            <a href="/tentang" class="{{ request()->is('tentang') ? 'active' : '' }}">
-                <i class="bi bi-database"></i> Tentang
-            </a>
-        </li>
-
-        <li>
-            <a href="/logout" class="text-danger">
-                <i class="bi bi-box-arrow-right"></i> Logout
-            </a>
-        </li>
-    </ul>
-</div>
-
-<!-- Button toggle (mobile) -->
-<button class="btn btn-purple toggle-btn" onclick="toggleSidebar()">
-    <i class="bi bi-list"></i>
-</button>
-
 <style>
     :root {
         --purple: #7b2cbf;
@@ -126,6 +91,42 @@
         }
     }
 </style>
+<div id="sidebar" class="sidebar">
+    <div class="sidebar-header">
+        <h5>GuestApp</h5>
+    </div>
+
+    <ul class="sidebar-menu">
+        <li>
+            <a href="/" class="{{ request()->is('/') ? 'active' : '' }}">
+                <i class="bi bi-house"></i> Home
+            </a>
+        </li>
+        <li>
+            <a href="/formulir" class="{{ request()->is('formulir') ? 'active' : '' }}">
+                <i class="bi bi-envelope-paper"></i> Formulir
+             </a>
+        </li>
+        <li>
+            <a href="/tentang" class="{{ request()->is('tentang') ? 'active' : '' }}">
+                <i class="bi bi-info"></i> Tentang
+            </a>
+        </li>
+
+        <li>
+            <a href="/logout" class="text-danger">
+                <i class="bi bi-box-arrow-right"></i> Logout
+            </a>
+        </li>
+    </ul>
+</div>
+
+<!-- Button toggle (mobile) -->
+<button class="btn btn-purple toggle-btn" onclick="toggleSidebar()">
+    <i class="bi bi-list"></i>
+</button>
+
+
 
 <script>
     function toggleSidebar() {
