@@ -76,9 +76,9 @@
   </style>
 </head>
 <body>
-{{--
+
 @extends('layouts.master')
-@section('content') --}}
+@section('content')
   <div class="wrap">
     <div class="card" data-aos="fade-up">
       <div class="d-flex align-items-center justify-content-between mb-3">
@@ -152,7 +152,7 @@
           </div>
 
           <div class="col-12 d-flex justify-content-between align-items-center">
-            <a href="{{ url('/') }}" class="btn btn-outline-secondary btn-sm">Kembali</a>
+            {{-- <a href="{{ url('/') }}" class="btn btn-outline-secondary btn-sm">Kembali</a> --}}
             <div>
               <button type="reset" class="btn btn-light btn-sm me-2">Reset</button>
               <button type="submit" class="btn-primary-custom btn-sm">Kirim <i class="bi bi-send ms-1"></i></button>

@@ -30,8 +30,9 @@ Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard
 
 
 // route crud
-Route::post('/admin/buku-tamu/tambah',[AdminController::class,'buku_tamu_tambah']);
-Route::post('/buku-tamu/delete/{id}', [AdminController::class, 'buku_tamu_delete']);
-Route::post('/admin/buku-tamu/edit{id}',[AdminController::class,'buku_tamu_edit']);
-Route::post('/admin/buku-tamu/update{id}',[AdminController::class,'buku_tamu_update']);
+
+Route::post('admin/buku-tamu/tambah', [AdminController::class, 'buku_tamu_tambah']);
+Route::get('admin/buku-tamu/edit/{id}', [AdminController::class, 'buku_tamu_edit']);
+Route::post('admin/buku-tamu/update/{id}', [AdminController::class, 'buku_tamu_update']);
+Route::post('admin/buku-tamu/delete/{id}', [AdminController::class, 'buku_tamu_delete']);
 

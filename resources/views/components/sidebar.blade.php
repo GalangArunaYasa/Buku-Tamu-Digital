@@ -93,7 +93,7 @@
 </style>
 <div id="sidebar" class="sidebar">
     <div class="sidebar-header">
-        <h5>GuestApp</h5>
+        <h5>Buku Tamu</h5>
     </div>
 
     <ul class="sidebar-menu">
@@ -105,6 +105,11 @@
         <li>
             <a href="/formulir" class="{{ request()->is('formulir') ? 'active' : '' }}">
                 <i class="bi bi-envelope-paper"></i> Formulir
+             </a>
+        </li>
+        <li>
+            <a href="/dashboard" class="{{ request()->is('dashboard') ? 'active' : '' }}">
+                <i class="bi bi-table"></i> Dashboard
              </a>
         </li>
         <li>

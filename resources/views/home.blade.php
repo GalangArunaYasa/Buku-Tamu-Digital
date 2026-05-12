@@ -168,7 +168,7 @@
                             untuk keperluan dokumentasi, laporan, serta evaluasi acara.
                         </p>
 
-                        <a href="{{ route('formulir') }}" id="btn-start" class="btn mt-4 mb-3 shadow" data-aos="fade-up"
+                        <a href="{{ route('login') }}" id="btn-start" class="btn mt-4 mb-3 shadow" data-aos="fade-up"
                             data-aos-delay="450">
                             + Isi Buku Tamu
                         </a>

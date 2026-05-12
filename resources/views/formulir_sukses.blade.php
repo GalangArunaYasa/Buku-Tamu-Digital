@@ -47,8 +47,8 @@
             <h2 class="fw-bold text-dark mb-3">Sukses!</h2>
             <p class="text-muted mb-4 px-2">Terima kasih, data formulir Anda telah berhasil kami terima. Kami akan segera memprosesnya.</p>
 
-            <a href="/" class="btn btn-success btn-lg rounded-pill w-100 shadow-sm">
-                Kembali ke Beranda
+            <a href="{{ url('/dashboard') }}" class="btn btn-success btn-lg rounded-pill w-100 shadow-sm">
+                Kembali ke Dashboard
             </a>
         </div>
     </div>
