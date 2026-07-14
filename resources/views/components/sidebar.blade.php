@@ -10,12 +10,12 @@
         position: fixed;
         top: 0;
         left: 0;
-        width: 240px;
+        width: 200px;
         height: 100%;
         background: white;
         border-right: 1px solid #eee;
         padding: 20px;
-        transition: 0.3s;
+        transition: left 0.3s ease;
         z-index: 1000;
     }
 
@@ -55,24 +55,60 @@
         color: white;
     }
 
-    /* Toggle button */
+    /* Sidebar tersembunyi (state "closed") - berlaku di semua ukuran layar */
+    .sidebar.closed {
+        left: -240px;
+    }
+
+    /* Toggle button - selalu tampil */
     .toggle-btn {
         position: fixed;
         top: 15px;
         left: 15px;
         z-index: 1100;
-        display: none;
         background: var(--purple);
         color: white;
+        border: none;
+        width: 42px;
+        height: 42px;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.1rem;
+        transition: left 0.3s ease;
     }
 
-    /* Content geser */
+    /* Saat sidebar terbuka di desktop, geser tombol biar tidak numpuk teks sidebar */
+    .toggle-btn.sidebar-open-desktop {
+        left: 255px;
+    }
+
+    /* Overlay gelap saat sidebar terbuka di mobile */
+    .sidebar-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.4);
+        z-index: 999;
+    }
+
+    .sidebar-overlay.show {
+        display: block;
+    }
+
+    /* Content geser mengikuti sidebar */
     .main-content {
         margin-left: 240px;
         padding: 20px;
+        transition: margin-left 0.3s ease;
     }
 
-    /* Responsive */
+    .main-content.full {
+        margin-left: 0;
+    }
+
+    /* Responsive: default sidebar tersembunyi di layar kecil */
     @media (max-width: 768px) {
         .sidebar {
             left: -240px;
@@ -82,8 +118,9 @@
             left: 0;
         }
 
-        .toggle-btn {
-            display: block;
+        .toggle-btn.sidebar-open-desktop {
+            left: 15px;
+            /* jangan geser tombol di mobile, nanti ketutup sidebar */
         }
 
         .main-content {
@@ -91,8 +128,13 @@
         }
     }
 </style>
+
+<!-- Overlay khusus mobile -->
+<div id="sidebarOverlay" class="sidebar-overlay" onclick="closeSidebarMobile()"></div>
+
 <div id="sidebar" class="sidebar">
     <div class="sidebar-header">
+        <span><i class="bi bi-note"></i></span>
         <h5>Buku Tamu</h5>
     </div>
 
@@ -105,36 +147,78 @@
         <li>
             <a href="/formulir" class="{{ request()->is('formulir') ? 'active' : '' }}">
                 <i class="bi bi-envelope-paper"></i> Formulir
-             </a>
+            </a>
         </li>
         <li>
             <a href="/dashboard" class="{{ request()->is('dashboard') ? 'active' : '' }}">
                 <i class="bi bi-table"></i> Dashboard
-             </a>
+            </a>
         </li>
         <li>
             <a href="/tentang" class="{{ request()->is('tentang') ? 'active' : '' }}">
-                <i class="bi bi-info"></i> Tentang
+                <i class="bi bi-info-square"></i> Tentang
             </a>
         </li>
 
-        <li>
+        {{-- <li>
             <a href="/logout" class="text-danger">
                 <i class="bi bi-box-arrow-right"></i> Logout
             </a>
-        </li>
+        </li> --}}
     </ul>
 </div>
 
-<!-- Button toggle (mobile) -->
-<button class="btn btn-purple toggle-btn" onclick="toggleSidebar()">
+<!-- Button toggle (tampil di semua ukuran layar) -->
+<button id="toggleBtn" class="btn toggle-btn" onclick="toggleSidebar()">
     <i class="bi bi-list"></i>
 </button>
 
-
-
 <script>
-    function toggleSidebar() {
-        document.getElementById('sidebar').classList.toggle('show');
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('sidebarOverlay');
+    const toggleBtn = document.getElementById('toggleBtn');
+    const mainContent = document.querySelector('.main-content');
+
+    function isMobile() {
+        return window.innerWidth <= 768;
     }
+
+    function toggleSidebar() {
+        if (isMobile()) {
+            // Mobile: sidebar melayang di atas konten + overlay
+            sidebar.classList.toggle('show');
+            overlay.classList.toggle('show');
+        } else {
+            // Desktop: sidebar mendorong/menyusutkan konten
+            sidebar.classList.toggle('closed');
+            mainContent && mainContent.classList.toggle('full');
+            toggleBtn.classList.toggle('sidebar-open-desktop', !sidebar.classList.contains('closed'));
+
+            // simpan preferensi supaya tetap sama saat halaman di-refresh
+            localStorage.setItem('sidebarClosed', sidebar.classList.contains('closed'));
+        }
+    }
+
+    function closeSidebarMobile() {
+        sidebar.classList.remove('show');
+        overlay.classList.remove('show');
+    }
+
+    // Terapkan preferensi tersimpan saat halaman dimuat (khusus desktop)
+    document.addEventListener('DOMContentLoaded', () => {
+        if (!isMobile() && localStorage.getItem('sidebarClosed') === 'true') {
+            sidebar.classList.add('closed');
+            mainContent && mainContent.classList.add('full');
+        } else if (!isMobile()) {
+            toggleBtn.classList.add('sidebar-open-desktop');
+        }
+    });
+
+    // Reset state overlay/show saat resize dari mobile ke desktop atau sebaliknya
+    window.addEventListener('resize', () => {
+        if (!isMobile()) {
+            overlay.classList.remove('show');
+            sidebar.classList.remove('show');
+        }
+    });
 </script>

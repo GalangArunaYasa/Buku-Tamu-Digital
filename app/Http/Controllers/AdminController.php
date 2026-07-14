@@ -9,7 +9,7 @@ class AdminController extends Controller
 {
     //menampilkan halaman dashboard dan data buku tamu
     function dashboard() {
-        $buku_tamu = Tamu::orderBy('id','desc')->get();
+        $buku_tamu = Tamu::orderBy('id','asc')->get();
         return view('dashboard',compact('buku_tamu'));
     }
 
@@ -29,7 +29,8 @@ class AdminController extends Controller
         $tamu -> no_wa = $request->no_wa;
         $tamu -> keperluan = $request->keperluan;
         $tamu -> save();
-        return redirect()->back();
+        return redirect()->back()
+        ->with('suksesTambah', 'Data Berhasil di Tambah');
     }
 
 
@@ -49,6 +50,8 @@ class AdminController extends Controller
         $tamu -> no_wa = $request->no_wa;
         $tamu -> keperluan = $request->keperluan;
         $tamu -> update();
-        return redirect('/dashboard');
+        return redirect('/dashboard')
+                ->with('sukses_edit', 'Data Berhasil diubah');
+
     }
 }

@@ -22,7 +22,7 @@
 
         /* Menyesuaikan dengan sidebar */
         .main-content {
-            margin-left: 260px;
+            /* margin-left: 260px; */
             padding: 30px;
             min-height: 100vh;
         }

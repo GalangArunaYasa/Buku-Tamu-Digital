@@ -20,7 +20,8 @@ class LoginController extends Controller
     function submitLogin(Request $request ){
         $data = $request->only('email','password');
         if (Auth::attempt($data)){
-            return redirect()->route('dashboard');
+            return redirect()->route('dashboard')
+            ->with('sukses_login', 'Login Berhasil');
 
         }else{
             return redirect()->route('login')

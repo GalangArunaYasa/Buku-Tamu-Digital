@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Layout Master</title>
 
+    
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
@@ -16,7 +18,7 @@
     @include('components.sidebar')
 
     {{-- Content --}}
-    <div class="flex-grow-2 p-4">
+    <div class="flex-grow-1 p-2">
         @yield('content')
     </div>
 
